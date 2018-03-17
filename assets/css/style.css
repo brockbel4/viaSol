@@ -1,3 +1,25 @@
 body {
     background-image: url("../images/rain.png");
+    font-family: Open Sans;
+}
+#logo {
+    width: 70%;
+}
+#welcome {
+    text-align: center;
+    color: white;
+    background-color:rgba(39, 32, 32, 0.7);
+    border-radius: 25px;
+    border: 2px solid rgba(39, 32, 32, 0.7);
+    line-height: 150%;
+}
+#disclaimer{
+    font-size: 20px;
+    margin-top: 5%;
+    margin-bottom: 8%;
+}
+#letsgo {
+    color: black;
+    background-color: white;
+    margin-bottom: 2%;
 }
