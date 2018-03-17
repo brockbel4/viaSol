@@ -25,14 +25,14 @@ body {
     margin-bottom: 2%;
 }
 .nav-wrapper {
-    background-color: white;
+    background: linear-gradient(rgb(71, 71, 71), gray, rgb(71, 71, 71) );
 }
 #home {
-    color: blue;
+    color: white;
 }
 #wwarnings {
-    color: blue;
+    color: white;
 }
 #usdest {
-    color: blue;
+    color: white;
 }
