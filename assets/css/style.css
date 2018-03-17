@@ -3,6 +3,7 @@ body {
     font-family: Montserrat;
 }
 #logo {
+    margin-top: 3%;
     width: 29%;
 }
 #welcome {
