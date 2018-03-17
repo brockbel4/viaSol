@@ -1,25 +1,38 @@
 body {
     background-image: url("../images/rain.png");
-    font-family: Open Sans;
+    font-family: Montserrat;
 }
 #logo {
-    width: 70%;
+    width: 29%;
 }
 #welcome {
+    margin-top: 10%;
     text-align: center;
     color: white;
-    background-color:rgba(39, 32, 32, 0.7);
+    background-color:rgba(39, 32, 32, 0.8);
     border-radius: 25px;
-    border: 2px solid rgba(39, 32, 32, 0.7);
+    border: 2px solid rgba(39, 32, 32, 0.8);
     line-height: 150%;
 }
 #disclaimer{
     font-size: 20px;
     margin-top: 5%;
-    margin-bottom: 8%;
+    margin-bottom: 6%;
 }
 #letsgo {
     color: black;
     background-color: white;
     margin-bottom: 2%;
+}
+.nav-wrapper {
+    background-color: white;
+}
+#home {
+    color: blue;
+}
+#wwarnings {
+    color: blue;
+}
+#usdest {
+    color: blue;
 }
