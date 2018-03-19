@@ -17,7 +17,11 @@
 
 <body>
 
-    
+    <div id="floating-panel">
+        <input id="address" type="textbox" value="Sydney, NSW">
+        <input id="submit" type="button" value="Geocode">
+      </div>
+      <div id="map"></div>
 
     <!-- Linking in JQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -27,7 +31,8 @@
         crossorigin="anonymous"></script>
     <!-- Linking in app.js (custom javascript file containing our logic) -->
     <script src="./assets/javascript/app.js"></script>
-    
+    <!-- Linking in Google Geocoding API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrmy_i70SaHTg0LER0aoFRY4m7hNUWKak&callback=initMap"></script>
 </body>
 
 </html>
