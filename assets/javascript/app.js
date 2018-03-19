@@ -8,7 +8,7 @@
             var state = "";
             var city = "";
             var lat = "";
-            var long = "";
+            var lng = "";
             // 'for' is for FORECAST
             var forCondition = "";
             var forWdir = "";
@@ -20,7 +20,7 @@
 
 
             // TO FIND NEAREST CITY AND STATE FROM GEOCODE LAT LONG (COMMENTED OUT UNTIL WE PLUGIN MAP DATA)
-            // var queryURL = "http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + lat + "," + long + ".json";
+            var queryURL = "http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + lat + "," + long + ".json";
 
 
             // Here we run our AJAX call to the Wunderground API TO CONVERT GEOCODE LAT LONG TO NEAREST CITY AND STATE WEATHER STATION
@@ -49,6 +49,7 @@
                     // CURRENT CONDITIONS SHOULD BE PULLED FROM CURRENT LOCATION
                     var queryURLconditions = "http://api.wunderground.com/api/" + APIkey + "/conditions/q/" + state + "/" + cityReplaced + ".json";
                     var queryURLhourly = "http://api.wunderground.com/api/" + APIkey + "/hourly/q/" + state + "/" + cityReplaced + ".json";
+                    var queryAlerts= "http://api.wunderground.com/api/" + APIkey+"/alerts/q/"+ state + "/" + cityReplaced +".json";
 
 
 
@@ -91,6 +92,17 @@
 
                         })
 
+
+                        $.ajax({
+                            url: queryAlerts,
+                            method: "GET"
+                        })
+
+                        .then(function (response) {
+                            console.log(response);
+                            console.log(response.alerts[0].description);
+
+                        })
 
 
                 });
