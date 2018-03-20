@@ -37,7 +37,6 @@ $(document).on("click", "#search", function calculateAndDisplayRoute() {
   calcRoute();
 })
 
-<<<<<<< HEAD
         // ONCLICK EVENT FUNCTION FOR OUR USER SEARCH BUTTON
         $("#search").on("click", function () {
             // Listing variables
@@ -58,7 +57,7 @@ $(document).on("click", "#search", function calculateAndDisplayRoute() {
 
 
             // TO FIND NEAREST CITY AND STATE FROM GEOCODE LAT LONG (COMMENTED OUT UNTIL WE PLUGIN MAP DATA)
-            var queryURL = "http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + lat + "," + long + ".json";
+            var queryURL = "http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + lat + "," + lng + ".json";
 
 
             // Here we run our AJAX call to the Wunderground API TO CONVERT GEOCODE LAT LONG TO NEAREST CITY AND STATE WEATHER STATION
@@ -148,5 +147,3 @@ $(document).on("click", "#search", function calculateAndDisplayRoute() {
         });
 
 // <!-- END WEATHER API'S ABOVE -->
-=======
->>>>>>> 706add4d5d978716b9cab5fb9bfbd2afda33caea
