@@ -5,34 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Via-Sol</title>
-    <!-- Linking Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
-    <!-- Linking in Styles.css (custom css file) -->
-    <link rel="stylesheet" href="./assets/css/styles.css">
-    <!-- Linking in Reset.css (uniform accross all browsers) -->
-    <link rel="stylesheet" href="./assets/css/reset.css">
+    <title>My google maps test</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
+    <form>
+        <label for="start-location">Where From?</label>
+        <input type="text" id="start-location">
+        <label for="end-location">Where To?</label>
+        <input type="text" id="end-location">
+        <input id="search" type="submit" value="Submit">
+    </form>
+    <div id="map"></div>
 
-    <div id="floating-panel">
-        <input id="address" type="textbox" value="Sydney, NSW">
-        <input id="submit" type="button" value="Geocode">
-      </div>
-      <div id="map"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIPfXCrgRMf1mJjoODmHMPgkrbT6iUqUo&callback=initMap"></script>
+    <script src="assets/javascript/app.js"></script>
 
-    <!-- Linking in JQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-    <!-- Linking in bootstraps JS -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <!-- Linking in app.js (custom javascript file containing our logic) -->
-    <script src="./assets/javascript/app.js"></script>
-    <!-- Linking in Google Geocoding API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrmy_i70SaHTg0LER0aoFRY4m7hNUWKak&callback=initMap"></script>
 </body>
 
 </html>

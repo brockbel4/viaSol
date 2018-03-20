@@ -1,4 +1,42 @@
-// <<<<<<< brock
+var map;
+var directionsDisplay;
+var directionsService;
+
+function initMap() {
+  directionsService = new google.maps.DirectionsService();
+  directionsDisplay = new google.maps.DirectionsRenderer();
+  var centerUS = new google.maps.LatLng(39.83333, -98.585522);
+  var mapOptions = {
+    zoom:4,
+    center: centerUS
+  }
+  var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+  directionsDisplay.setMap(map);
+  directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+}
+
+function calcRoute() {
+  var start = $("#start-location").val().trim();
+  var end = $("#end-location").val().trim();
+  var request = {
+    origin:start,
+    destination:end,
+    travelMode: 'DRIVING'
+  };
+  console.log(directionsService);
+  directionsService.route(request, function(response, status) {
+    if (status == 'OK') {
+      directionsDisplay.setDirections(response);
+    }
+  });
+}
+
+$(document).on("click", "#search", function calculateAndDisplayRoute() {
+  console.log("This button works")
+  event.preventDefault();
+  calcRoute();
+})
+
 geocoder = new google.maps.Geocoder();
 
 function getCoordinates (address, callback){
@@ -8,7 +46,7 @@ function getCoordinates (address, callback){
         coordinates = [coords_obj.nb,coords_obj.ob];
         callback(coordinates);
     })
-=======
+
 // <!--START WEATHER API'S BELOW  -->
 
         // ONCLICK EVENT FUNCTION FOR OUR USER SEARCH BUTTON
@@ -31,7 +69,7 @@ function getCoordinates (address, callback){
 
 
             // TO FIND NEAREST CITY AND STATE FROM GEOCODE LAT LONG (COMMENTED OUT UNTIL WE PLUGIN MAP DATA)
-            var queryURL = "http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + lat + "," + long + ".json";
+            var queryURL = "http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + lat + "," + lng + ".json";
 
 
             // Here we run our AJAX call to the Wunderground API TO CONVERT GEOCODE LAT LONG TO NEAREST CITY AND STATE WEATHER STATION
@@ -121,4 +159,4 @@ function getCoordinates (address, callback){
         });
 
 // <!-- END WEATHER API'S ABOVE -->
-// >>>>>>> master
+
