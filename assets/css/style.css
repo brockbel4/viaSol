@@ -2,6 +2,11 @@ body {
     background-image: url("../images/rain.png");
     font-family: Montserrat;
 }
+html, body {
+    height: 100%;
+    padding: none;
+    margin: none;
+}
 #logo {
     margin-top: 3%;
     width: 29%;
@@ -21,10 +26,12 @@ body {
     margin-top: 5%;
     margin-bottom: 6%;
 }
-#letsgo {
+.loginbuttons {
     color: black;
     background-color: white;
-    margin-bottom: 2%;
+    margin-bottom: 4%;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 .nav-wrapper {
     background: linear-gradient(rgb(71, 71, 71), gray, rgb(71, 71, 71) );
@@ -66,6 +73,7 @@ body {
     margin-right: 2%;
     background-color: yellow;
     border-radius: 5%;
+    text-align: center;
 }
 #start-location {
    margin-left: 3%;
