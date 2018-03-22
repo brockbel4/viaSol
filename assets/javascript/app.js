@@ -18,7 +18,7 @@ function initMap() {
 }
 
 // jQuery(document).ready(function ($) {
-   
+
 //     // initMap();
 
 // });
@@ -37,8 +37,20 @@ function calcRoute() {
     directionsService.route(request, function (response, status) {
         if (status == 'OK') {
             directionsDisplay.setDirections(response);
+            showSteps(response);
         }
     });
+
+}
+//this object will contain all data relevant to the requested route
+function showSteps(directionResult) {
+
+    var myRoute = directionResult.routes[0].legs[0];
+    console.log(myRoute)
+    console.log("Starting Lat: " + myRoute.start_location.lat());
+    console.log("Starting Long: " + myRoute.start_location.lng());
+    console.log("Ending Lat: " + myRoute.end_location.lat());
+    console.log("Ending Long: " + myRoute.end_location.lng());
 }
 
 $(document).on("click", "#search", function calculateAndDisplayRoute() {
