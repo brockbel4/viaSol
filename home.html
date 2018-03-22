@@ -40,12 +40,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script> -->
 
-    <!-- Linking in app.js (custom javascript file containing our logic) -->
-    <script src = "./assets/javascript/app.js"></script>
-
-    <!--linking in Weather Underground API-->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"> </script>
-
     <div class="row">
         <nav>
             <div class="nav-wrapper">
@@ -68,35 +62,46 @@
     </div>
 
     <div class="row">
-        <div class="col m2" id="leftmar">
-            <br>
-        </div>
-        <div class="col m8">
-            <div id="welcome">
-                <h1>Welcome!</h1>
-                <p id="disclaimer">Via-Sol is a web application where you can not only find directions to your next roadtrip destination, but
-                    it will also alert you of any inclimate or harsh weather conditions along the way. This website is made
-                    to help you, not hurt you, so always be aware of your surroundings.</p>
-                <button id="create" class="loginbuttons" type="button" onclick="location.href='home.html'">
-                    <b>Create an Account</b>
-                </button>
-                <button id="login" class="loginbuttons" type="button" onclick="location.href='home.html'">
-                    <b>Log In</b>
-                </button>
-                <button id="continue" class="loginbuttons" type="button" onclick="location.href='home.html'">
-                    <b>Continue as Guest</b>
-                </button>
-            </div>
+        <div class="col m3" id="hleftmar">
+            <div id="input">
+                <form id="user-input">
+                    <p class="criteria" id="starting">Starting Location: </p>
+                    <input type="text" id="start-location">
+                    <p class="criteria" id="or">-or-</p>
+                    <br>
+                    <button id="current-location">Use Current Location</button>
 
+                    <p class="criteria">Destination: </p>
+                    <input type="text" id="end-location">
+
+                    <p class="criteria">Departure Date: </p>
+                    <input type="date" name="date">
+
+                    <p class="criteria">Departure Time: </p>
+                    <input type="time" name="time">
+
+                    <button id="search">Go!</button>
+                </form>
+            </div>
         </div>
-        <div class="col m2" id="rightmar">
-            <br>
+        <div class="col m6" id="hcenter">
+            <div id="map">
+                
+            </div>
+        </div>
+        <div class="col m3" id="hleftmar">
+            <div id="directionsPanel">
+            </div>
         </div>
     </div>
 
     <footer class="page-footer">
         © 2018 Via-Sol by Brock, Ross, Scott, and Taylor
     </footer>
+    <!-- Linking in app.js (custom javascript file containing our logic) -->
+    <script src="./assets/javascript/app.js"></script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIPfXCrgRMf1mJjoODmHMPgkrbT6iUqUo&callback=initMap"></script>
 
 </body>
 
