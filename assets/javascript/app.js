@@ -8,7 +8,7 @@ var config = {
     messagingSenderId: "591795845182"
 };
 firebase.initializeApp(config);
-
+// This is the email and password account creation function that will take the data, validate it and then store it under "Authentication" in the Firebase Database
 function signUpActivation(e) {
     e.preventDefault();
     console.log("code ran");
@@ -27,7 +27,7 @@ function signUpActivation(e) {
         });
     }
 }
-
+// This is the login function that will check if the account exists and if the credentials match
 function logInActivation(f) {
     f.preventDefault();
     var email = $("#email").val().trim();
@@ -40,7 +40,7 @@ function logInActivation(f) {
         // ...
     });
 }
-
+// This button allows the user to signout of their account
 $("#signOut").click(function (e) {
     e.preventDefault();
     firebase.auth().signOut().catch(function (error) {
@@ -50,7 +50,7 @@ $("#signOut").click(function (e) {
         var errorMessage = error.message;
         // ...
     });
-});
+}); // this detects the state change and reports if they are logged in out out...
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
@@ -63,11 +63,11 @@ $("#signOut").click(function (e) {
         }
     });
 
-
+// These are the two submit buttons for the pages
     $("#createAccount").submit(signUpActivation);
     $("#login").submit(logInActivation);
 
-
+// This is an algorithm that will validate email addresses
     function validateEmail(email) {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
