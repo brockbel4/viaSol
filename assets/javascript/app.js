@@ -160,8 +160,8 @@ function showSteps(directionResult) {
 
 
     // TO FIND NEAREST CITY AND STATE FROM GEOCODE LAT LONG (COMMENTED OUT UNTIL WE PLUGIN MAP DATA)
-    var startCityStateURL = "http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + startLat + "," + startLng + ".json";
-    var endCityStateURL = "http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + endLat + "," + endLng + ".json";
+    var startCityStateURL = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + startLat + "," + startLng + ".json";
+    var endCityStateURL = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + endLat + "," + endLng + ".json";
 
 
     // Here we run our AJAX call to the Wunderground API TO CONVERT GEOCODE LAT LONG TO NEAREST CITY AND STATE WEATHER STATION
@@ -181,7 +181,7 @@ function showSteps(directionResult) {
 
             console.log(cityReplaced);
             // TO FIND CONDITIONS FROM NEAREST CITY AND STATE(WILL BE USED BOTH FOR START AND END LOCATIONS)
-            var queryURLconditions = "http://api.wunderground.com/api/" + APIKey + "/conditions/q/" + startState + "/" + cityReplaced + ".json";
+            var queryURLconditions = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/conditions/q/" + startState + "/" + cityReplaced + ".json";
 
             $.ajax({
                 url: queryURLconditions,
@@ -200,8 +200,11 @@ function showSteps(directionResult) {
                     console.log(curTemp);
                     var curObservationLower = curObservation.toLowerCase();
                     console.log(curObservation);
+                    if (curObservationLower==="overcast"){
+                        curObservationLower="cloudy";
+                    }
 
-                    $("#weather-conditions").append("<Div>Temperature:"+curTemp+"</Div>")
+                    $("#weather-conditions").append("<Div>Temperature:"+curTemp+"Conditions:<img src=https://icons.wxug.com/i/c/k/"+curObservationLower+".gif>"+curObservation+"Wind:"+curWinSpd+"Direction:"+curWind+ "</Div>")
 
 
                 })
@@ -238,6 +241,26 @@ function showSteps(directionResult) {
                 .then(function (response) {
 
                     console.log(response);
+                    console.log(response);
+                    curWind = response.current_observation.wind_dir;
+                    curWinSpd = response.current_observation.wind_mph;
+                    console.log(response.current_observation.weather);
+                    console.log(response.current_observation.temp_f);
+                    curObservation = response.current_observation.weather.split(' ').join('');
+                    console.log(curObservation);
+                    curTemp = Math.round(response.current_observation.temp_f);
+                    console.log(curTemp);
+                    var curObservationLower = curObservation.toLowerCase();
+                    console.log(curObservation);
+                    if (curObservationLower==="overcast"){
+                        curObservationLower="cloudy";
+                    }
+
+                    if (curObservationLower==="thunderstorm"){
+                        curObservationLower="tstorms";
+                    }
+
+                    $("#weather-conditions").append("<Div>Temperature:"+curTemp+"Conditions:<img src=https://icons.wxug.com/i/c/k/"+curObservationLower+".gif>"+curObservationLower+"Wind:"+curWinSpd+"Direction:"+curWind+ "</Div>")
 
 
                 })
