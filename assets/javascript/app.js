@@ -135,9 +135,9 @@ $("#signOut").click(function (e) {
         console.log("Ending Long: " + myRoute.end_location.lng());
     }
 
-    $(document).on("click", "#search", function calculateAndDisplayRoute() {
-        console.log("This button works")
+    $(document).click("#user-input", function calculateAndDisplayRoute(event) {
         event.preventDefault();
+        console.log("This button works")
         calcRoute();
     })
 
