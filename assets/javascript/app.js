@@ -251,7 +251,7 @@ function showSteps(directionResult) {
             console.log(response.location.city);
 
             // TO FIND CONDITIONS FROM NEAREST CITY AND STATE(WILL BE USED BOTH FOR START AND END LOCATIONS)
-            var queryURLconditions = "http://api.wunderground.com/api/" + APIKey + "/conditions/q/" + endState + "/" + cityReplaced + ".json";
+            var queryURLconditions = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/conditions/q/" + endState + "/" + cityReplaced + ".json";
             var queryURLhourly = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/hourly/q/" + endState + "/" + cityReplaced + ".json";
             $.ajax({
                 url: queryURLhourly,
