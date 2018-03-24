@@ -41,7 +41,7 @@
         crossorigin="anonymous"></script> -->
 
     <!-- Linking in app.js (custom javascript file containing our logic) -->
-    <script src = "./assets/javascript/app.js"></script>
+    <script src="./assets/javascript/app.js"></script>
 
     <!--linking in Weather Underground API-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"> </script>
@@ -59,9 +59,6 @@
                     <li>
                         <a href="warnings.html" id="wwarnings">Weather Warnings</a>
                     </li>
-                    <li>
-                        <a href="destinations.html" id="usdest">U.S. Destinations</a>
-                    </li>
                 </ul>
             </div>
         </nav>
@@ -72,11 +69,12 @@
             <br>
         </div>
         <div class="col m8">
-            <div id="welcome">
+            <div id="welcome" class="landing">
                 <h1>Welcome!</h1>
                 <p id="disclaimer">Via-Sol is a web application where you can not only find directions to your next roadtrip destination, but
-                    it will also alert you of any inclimate or harsh weather conditions along the way. This website is made
-                    to help you, not hurt you, so always be aware of your surroundings.</p>
+                    it will also alert you of any inclimate or harsh weather conditions along the way.
+                    <br>
+                    <br> This website is made to help you, not hurt you, so always be aware of your surroundings.</p>
                 <button id="create" class="loginbuttons" type="button" onclick="location.href='home.html'">
                     <b>Create an Account</b>
                 </button>
@@ -87,7 +85,8 @@
                     <b>Continue as Guest</b>
                 </button>
             </div>
-
+            <div id="log-in" class="landing">
+            </div>
         </div>
         <div class="col m2" id="rightmar">
             <br>
