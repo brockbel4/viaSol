@@ -6,6 +6,11 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+.accountbg {
+    background-image: url("../images/rain.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .loginbg {
     background-image: url("../images/snow.jpg");
     background-repeat: no-repeat;
@@ -216,6 +221,7 @@ input {
 #map {
     height: 100%;
     margin-top: 5%;
+    margin-left: 0%;
   }
 @media print {
     #map {

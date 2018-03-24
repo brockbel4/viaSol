@@ -165,20 +165,9 @@ function showSteps(directionResult) {
     var endLng = myRoute.end_location.lng();
     var tripDuration = myRoute.duration.text;
 
-
-
-
-
-
-
-
-
-
-
     // TO FIND NEAREST CITY AND STATE FROM GEOCODE LAT LONG (COMMENTED OUT UNTIL WE PLUGIN MAP DATA)
     var startCityStateURL = "http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + startLat + "," + startLng + ".json";
     var endCityStateURL = "http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + endLat + "," + endLng + ".json";
-
 
     // Here we run our AJAX call to the Wunderground API TO CONVERT GEOCODE LAT LONG TO NEAREST CITY AND STATE WEATHER STATION
     $.ajax({
