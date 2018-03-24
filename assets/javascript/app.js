@@ -164,8 +164,8 @@ function showSteps(directionResult) {
     var endLat = myRoute.end_location.lat();
     var endLng = myRoute.end_location.lng();
     var tripDuration = myRoute.duration.text;
-    var tripTime = tripDuration.split(" "); 
-    var timeArray =[];
+    var tripTime = tripDuration.split(" ");
+    var timeArray = [];
     timeArray = timeArray.concat(tripTime);
     var tripHours = parseInt(timeArray[0]);
     var tripMinutes = parseInt(timeArray[2])
@@ -178,8 +178,8 @@ function showSteps(directionResult) {
     console.log(hoursAway);
 
     // TO FIND NEAREST CITY AND STATE FROM GEOCODE LAT LONG (COMMENTED OUT UNTIL WE PLUGIN MAP DATA)
-    var startCityStateURL = "http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + startLat + "," + startLng + ".json";
-    var endCityStateURL = "http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + endLat + "," + endLng + ".json";
+    var startCityStateURL = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + startLat + "," + startLng + ".json";
+    var endCityStateURL = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + endLat + "," + endLng + ".json";
 
     // Here we run our AJAX call to the Wunderground API TO CONVERT GEOCODE LAT LONG TO NEAREST CITY AND STATE WEATHER STATION
     $.ajax({
@@ -198,7 +198,8 @@ function showSteps(directionResult) {
 
             console.log(cityReplaced);
             // TO FIND CONDITIONS FROM NEAREST CITY AND STATE(WILL BE USED BOTH FOR START AND END LOCATIONS)
-            var queryURLconditions = "http://api.wunderground.com/api/" + APIKey + "/conditions/q/" + startState + "/" + cityReplaced + ".json";
+            var queryURLconditions = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/conditions/q/" + startState + "/" + cityReplaced + ".json";
+            var queryURLhourly = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/hourly/q/" + state + "/" + cityReplaced + ".json";
 
             $.ajax({
                 url: queryURLconditions,
@@ -217,7 +218,11 @@ function showSteps(directionResult) {
                     console.log(curTemp);
                     var curObservationLower = curObservation.toLowerCase();
                     console.log(curObservation);
+                    if (curObservationLower === "overcast") {
+                        curObservationLower = "cloudy";
+                    }
 
+                    $("#weather-conditions").append("<Div>Temperature:" + curTemp + "Conditions:<img src=https://icons.wxug.com/i/c/k/" + curObservationLower + ".gif>" + curObservation + "Wind:" + curWinSpd + "Direction:" + curWind + "</Div>")
                     $("#weather-conditions").append("<Div>Temperature:" + curTemp + "</Div>")
 
 
@@ -236,7 +241,7 @@ function showSteps(directionResult) {
         method: "GET"
     })
         .then(function (response) {
-
+            var APIKey = "1a7471eee44adb74";
             console.log(response);
             console.log(response);
             console.log(response.location.state);
@@ -247,17 +252,42 @@ function showSteps(directionResult) {
 
             // TO FIND CONDITIONS FROM NEAREST CITY AND STATE(WILL BE USED BOTH FOR START AND END LOCATIONS)
             var queryURLconditions = "http://api.wunderground.com/api/" + APIKey + "/conditions/q/" + endState + "/" + cityReplaced + ".json";
-
+            var queryURLhourly = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/hourly/q/" + endState + "/" + cityReplaced + ".json";
             $.ajax({
-                url: queryURLconditions,
+                url: queryURLhourly,
                 method: "GET"
             })
                 .then(function (response) {
 
+                    // LOGGING TO TEST RESPONSES
+                    console.log(queryURLhourly);
                     console.log(response);
+                    console.log(response.hourly_forecast[0].condition, response.hourly_forecast[0].wdir.dir, response.hourly_forecast[0].wspd.english, response.hourly_forecast[0].temp.english);
+                    console.log(response)
+                    // THIS FOR LOOP IS FOR APPENDING HTML DATA FOR HOURLY FORECAST
+                    
+                        console.log(response.hourly_forecast[hoursAway].condition, response.hourly_forecast[hoursAway].wdir.dir, response.hourly_forecast[hoursAway].wspd.english, response.hourly_forecast[hoursAway].temp.english);
+                        var forCondition = response.hourly_forecast[hoursAway].condition;
+                        var forWdir = response.hourly_forecast[hoursAway].wdir.dir;
+                        var forWspd = response.hourly_forecast[hoursAway].wspd.english;
+                        var forTemp = response.hourly_forecast[hoursAway].temp.english;
+                        var forObservationLower = response.hourly_forecast[hoursAway].condition.toLowerCase();
+                        console.log(forCondition);
+                        console.log(forWdir);
+                        console.log(forWspd);
+                        console.log(forTemp);
+                        if (forObservationLower === "overcast") {
+                            forObservationLower = "cloudy";
+                        }
+
+                        if (forObservationLower === "thunderstorm") {
+                            forObservationLower = "tstorms";
+                        }
+
+                        $("#weather-conditions").append("<Div>FORCASTin"+hoursAway+"HOURS  Temperature:" + forTemp + "Conditions:<img src=https://icons.wxug.com/i/c/k/" + forObservationLower + ".gif>" + forObservationLower + "Wind:" + forWspd + "Direction:" + forWdir + "</Div>")
 
 
-                })
+                    })
 
 
         })
