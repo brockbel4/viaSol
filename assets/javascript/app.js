@@ -2,16 +2,7 @@ console.log("AHSOGHASOGHASOGHAS");
 $('#weather-conditions').hide();
 $('#log-in').hide();
 
-var map;
-var directionsDisplay;
-var directionsService;
-function initMap() {
-    directionsService = new google.maps.DirectionsService();
-    directionsDisplay = new google.maps.DirectionsRenderer();
-    var centerUS = new google.maps.LatLng(39.83333, -98.585522);
-    var mapOptions = {
-        zoom: 4,
-        center: centerUS}
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyDMltNrRLk5fYmzKHj3hZc0FjgeUx2EgnA",
@@ -100,6 +91,7 @@ $("#signOut").click(function (e) {
     var directionsDisplay;
     var directionsService;
     function initMap() {
+        console.log("initmap is running")
         directionsService = new google.maps.DirectionsService();
         directionsDisplay = new google.maps.DirectionsRenderer();
         var centerUS = new google.maps.LatLng(39.83333, -98.585522);
@@ -113,7 +105,23 @@ $("#signOut").click(function (e) {
         directionsDisplay.setPanel(document.getElementById('directionsPanel'));
     }
 
-}
+    function calcRoute() {
+        var start = $("#start-location").val().trim();
+        var end = $("#end-location").val().trim();
+        var request = {
+            origin: start,
+            destination: end,
+            travelMode: 'DRIVING'
+        };
+        console.log(directionsService);
+        directionsService.route(request, function (response, status) {
+            if (status == 'OK') {
+                directionsDisplay.setDirections(response);
+                showSteps(response);
+            }
+        });
+ 
+    }
 //this object will contain all data relevant to the requested route
 function showSteps(directionResult) {
 
@@ -140,9 +148,7 @@ function showSteps(directionResult) {
     var endLat = myRoute.end_location.lat();
     var endLng = myRoute.end_location.lng();
     var tripDuration = myRoute.duration.text;
-    var tripDuration2 = tripDuration.match(/[0-23]/g);
-
-    console.log(tripDuration2);
+    
 
 
 
@@ -191,7 +197,11 @@ function showSteps(directionResult) {
                     curObservation = response.current_observation.weather.split(' ').join('');
                     console.log(curObservation);
                     curTemp = Math.round(response.current_observation.temp_f);
+                    console.log(curTemp);
                     var curObservationLower = curObservation.toLowerCase();
+                    console.log(curObservation);
+
+                    $("#weather-conditions").append("<Div>Temperature:"+curTemp+"</Div>")
 
 
                 })
@@ -256,6 +266,8 @@ $(document).on("click", "#search", function calculateAndDisplayRoute() {
     console.log("This button works")
     event.preventDefault();
     calcRoute();
+    $("#input").hide();
+    $("#weather-conditions").show();
 
 })
 
