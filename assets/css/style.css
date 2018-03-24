@@ -7,7 +7,7 @@ body {
     background-size: cover;
 }
 .accountbg {
-    background-image: url("../images/rain.png");
+    background-image: url("../images/storm.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -108,7 +108,7 @@ input[type=text] {
     margin-top: 3%;
 }
 #loginbutton {
-    margin-bottom: 3px;
+    margin-bottom: 4%;
 }
 .createCriteria {
     text-align: center;
