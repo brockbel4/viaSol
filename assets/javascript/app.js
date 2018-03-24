@@ -11,37 +11,107 @@ function initMap() {
     var centerUS = new google.maps.LatLng(39.83333, -98.585522);
     var mapOptions = {
         zoom: 4,
-        center: centerUS
+        center: centerUS}
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyDMltNrRLk5fYmzKHj3hZc0FjgeUx2EgnA",
+    authDomain: "viasol-1521141281865.firebaseapp.com",
+    databaseURL: "https://viasol-1521141281865.firebaseio.com",
+    projectId: "viasol-1521141281865",
+    storageBucket: "viasol-1521141281865.appspot.com",
+    messagingSenderId: "591795845182"
+};
+firebase.initializeApp(config);
+// This is the email and password account creation function that will take the data, validate it and then store it under "Authentication" in the Firebase Database
+function signUpActivation(e) {
+    e.preventDefault();
+    console.log("code ran");
+    var email = $("#emailCreate").val().trim();
+    var password = $("#passwordCreate").val().trim();
+    if (validateEmail(email) === false) {
+        // Alert that the email is not valid.
+        console.log("email invalid");
+    } else {
+        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // ...
+            console.log(error, "hello");
+        });
     }
-    console.log("wasaaaaap");
-    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-    directionsDisplay.setMap(map);
-    directionsDisplay.setPanel(document.getElementById('directionsPanel'));
 }
-
-// jQuery(document).ready(function ($) {
-
-//     // initMap();
-
-// });
-
-
-
-function calcRoute() {
-    var start = $("#start-location").val().trim();
-    var end = $("#end-location").val().trim();
-    var request = {
-        origin: start,
-        destination: end,
-        travelMode: 'DRIVING'
-    };
-    console.log(directionsService);
-    directionsService.route(request, function (response, status) {
-        if (status == 'OK') {
-            directionsDisplay.setDirections(response);
-            showSteps(response);
+// This is the login function that will check if the account exists and if the credentials match
+function logInActivation(f) {
+    f.preventDefault();
+    var email = $("#email").val().trim();
+    var password = $("#password").val().trim();
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+        console.log(error, "error", error.code);
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+    });
+}
+// This button allows the user to signout of their account
+$("#signOut").click(function (e) {
+    e.preventDefault();
+    firebase.auth().signOut().catch(function (error) {
+        console.log(error, "error", error.code, error.message);
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+    });
+}); // this detects the state change and reports if they are logged in out out...
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            // User is signed in.
+            console.log(user.email, "logged in");
+            // ...
+        } else {
+            console.log("logged out")
+            // User is signed out.
+            // ...
         }
     });
+
+// These are the two submit buttons for the pages
+    $("#createAccount").submit(signUpActivation);
+    $("#login").submit(logInActivation);
+
+// This is an algorithm that will validate email addresses
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+
+
+
+
+
+
+    // This is the Line between the Maps Code and the Firebase account creation and login (User Authentication)
+
+    console.log("AHSOGHASOGHASOGHAS");
+
+    var map;
+    var directionsDisplay;
+    var directionsService;
+    function initMap() {
+        directionsService = new google.maps.DirectionsService();
+        directionsDisplay = new google.maps.DirectionsRenderer();
+        var centerUS = new google.maps.LatLng(39.83333, -98.585522);
+        var mapOptions = {
+            zoom: 4,
+            center: centerUS
+        }
+        console.log("wasaaaaap");
+        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        directionsDisplay.setMap(map);
+        directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+    }
 
 }
 //this object will contain all data relevant to the requested route
@@ -163,8 +233,6 @@ function showSteps(directionResult) {
                 })
 
 
-
-
         })
 
 
@@ -188,8 +256,7 @@ $(document).on("click", "#search", function calculateAndDisplayRoute() {
     console.log("This button works")
     event.preventDefault();
     calcRoute();
-    $('#input').hide();
-    $('#weather-conditions').show();
+
 })
 
 // <!--START WEATHER API'S BELOW  -->
