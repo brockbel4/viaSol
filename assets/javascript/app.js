@@ -164,6 +164,18 @@ function showSteps(directionResult) {
     var endLat = myRoute.end_location.lat();
     var endLng = myRoute.end_location.lng();
     var tripDuration = myRoute.duration.text;
+    var tripTime = tripDuration.split(" "); 
+    var timeArray =[];
+    timeArray = timeArray.concat(tripTime);
+    var tripHours = parseInt(timeArray[0]);
+    var tripMinutes = parseInt(timeArray[2])
+    var hoursAway = 0;
+    if (tripMinutes >= 30) {
+        hoursAway = tripHours + 1;
+    } else {
+        hoursAway = tripHours;
+    }
+    console.log(hoursAway);
 
 
 
