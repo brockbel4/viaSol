@@ -36,6 +36,7 @@
     <!-- Linking in JQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
     <!-- Linking in bootstraps JS
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
@@ -76,10 +77,10 @@
                     <input type="text" id="end-location">
 
                     <p class="criteria">Departure Date: </p>
-                    <input type="date" name="date">
+                    <input type="date" name="date" id="date">
 
                     <p class="criteria">Departure Time: </p>
-                    <input type="time" name="time">
+                    <input type="time" name="time" id="time">
 
                     <button id="search" type="submit">Go!</button>
                 </form>
@@ -87,7 +88,7 @@
         </div>
         <div class="col m6" id="hcenter">
             <div id="map">
-                
+
             </div>
         </div>
         <div class="col m3" id="hleftmar">
