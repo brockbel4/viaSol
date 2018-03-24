@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="loginbg">
 
 <head>
     <meta charset="UTF-8">
@@ -69,16 +69,28 @@
             <br>
         </div>
         <div class="col m8">
-            <div id="Create-Account" class="landing">
+            <div id="Login" class="landing">
                 <h1>User Login</h1>
                 <p>Log in to see any trips you've saved.</p>
+
                 <form id="login">
+
+                    <p id="loginUN" class="createCriteria">Username: </p>
                     <input id="email" type="text">
+
+                    <p class="createCriteria">Password: </p>
                     <input id="password" type="text">
-                    <input id="submit" type="submit" value="submit">
+
+                    <br>
+
+                    <button id="loginbutton" class="loginbuttons" type="submit">
+                        <b>Log In</b>
+                    </button>
+                    <button class="loginbuttons" id="signOut">
+                        <b>Sign Out</b>
+                    </button>
                 </form>
 
-                <input id="signOut" type="button" value="signout">
             </div>
         </div>
         <div class="col m2" id="rightmar">

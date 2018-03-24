@@ -1,6 +1,30 @@
 body {
-    background-image: url("../images/rain.png");
     font-family: Montserrat;
+}
+.indexbg {
+    background-image: url("../images/rain.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.loginbg {
+    background-image: url("../images/snow.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.createbg {
+    background-image: url("../images/sunbokeh.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.homebg {
+    background-image: url("../images/rain.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.warningsbg {
+    background-image: url("../images/rain.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 html, body {
     height: 100%;
@@ -75,6 +99,12 @@ input[type=text] {
     width: 50%;
     text-align: center;
 }
+#loginUN {
+    margin-top: 3%;
+}
+#loginbutton {
+    margin-bottom: 3px;
+}
 .createCriteria {
     text-align: center;
     margin-bottom: 0%;
@@ -85,13 +115,13 @@ input[type=text] {
 #createAccount {
     margin-top: 5%;
 }
-#map{
+/* #map{
     margin-top: 7%;
     margin-left: 1%;
     margin-right: 1%;
     border-radius: 5%;
     height: 390px;
-} */
+} */ 
 #directionsPanel{
     margin-top: 5%;
     margin-left: 0%;
