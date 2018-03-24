@@ -12,8 +12,8 @@ html, body {
     width: 29%;
     margin-left: 5%;
 }
-#welcome {
-    margin-top: 10%;
+.landing {
+    margin-top: 5%;
     text-align: center;
     color: white;
     background-color:rgba(39, 32, 32, 0.8);
@@ -61,6 +61,27 @@ html, body {
     margin-right: 1%;
     background-color: none;
 }
+.createInput {
+    border-bottom: none;
+    background-color: white;
+    margin-top: 7%;
+    text-align: center;
+}
+input[type=text] {
+    border-bottom: none;
+    width: 50%;
+    text-align: center;
+}
+.createCriteria {
+    text-align: center;
+    margin-bottom: 0%;
+}
+#submitCreate {
+    margin-left: 0%;
+}
+#createAccount {
+    margin-top: 5%;
+}
 #map{
     margin-top: 7%;
     margin-left: 1%;
@@ -106,7 +127,7 @@ html, body {
     font-size: 16px;
 }
 form p {
-    margin-left: 3%;
+    margin-left: 0%;
     border: none;
 }
 #or {

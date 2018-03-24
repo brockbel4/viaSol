@@ -73,11 +73,6 @@ $("#signOut").click(function (e) {
         return re.test(String(email).toLowerCase());
     }
 
-
-
-
-
-
     // This is the Line between the Maps Code and the Firebase account creation and login (User Authentication)
 
     console.log("AHSOGHASOGHASOGHAS");
