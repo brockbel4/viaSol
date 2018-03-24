@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="homebg">
 
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,6 @@
 
     <!-- Linking in Reset.css (uniform accross all browsers) -->
     <link rel="stylesheet" href="./assets/css/reset.css">
-
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -56,7 +55,7 @@
                         <a href="warnings.html" id="wwarnings">Weather Warnings</a>
                     </li>
                     <li>
-                        <a href="destinations.html" id="usdest">U.S. Destinations</a>
+                        <a href="account.html" id="account">Account</a>
                     </li>
                 </ul>
             </div>
@@ -69,10 +68,7 @@
                 <form id="user-input">
                     <p class="criteria" id="starting">Starting Location: </p>
                     <input type="text" id="start-location">
-                    <p class="criteria" id="or">-or-</p>
-                    <br>
-                    <button id="current-location">Use Current Location</button>
-
+                   
                     <p class="criteria">Destination: </p>
                     <input type="text" id="end-location">
 
@@ -84,6 +80,8 @@
 
                     <button id="search" type="submit">Go!</button>
                 </form>
+            </div>
+            <div id="weather-conditions">
             </div>
         </div>
         <div class="col m6" id="hcenter">

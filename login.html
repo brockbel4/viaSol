@@ -1,24 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="loginbg">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Via-Sol</title>
+
+    <!-- adding an icon to our webpage tab-->
+    <link rel="icon" href="assets/images/9138e6044c6679c18b7c1e88d9086ce3.png">
+
+    <!-- Linking in Reset.css (uniform accross all browsers) -->
+    <link rel="stylesheet" href="./assets/css/reset.css">
+
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+    </script>
+
+    <!-- Linking in Style.css (custom css file) -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
 </head>
 
 <body>
-    <form id="login">
-        <input id="email" type="text">
-        <input id="password" type="text">
-        <input id="submit" type="submit" value="submit">
-    </form>
+    <!-- Linking in JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
 
-    <input id="signOut" type="button" value="signout">
+    <!-- Linking in bootstraps JS
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script> -->
+
+    <!-- Linking in app.js (custom javascript file containing our logic) -->
+    <script src="./assets/javascript/app.js"></script>
+
+    <!--linking in Weather Underground API-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"> </script>
+
+    <div class="row">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="home.html" class="brand-logo">
+                    <img src="./assets/images/via-sol.png" alt="via-sol-logo" id="logo" a href="home.html">
+                </a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li>
+                        <a href="home.html" id="home">Home</a>
+                    </li>
+                    <li>
+                        <a href="warnings.html" id="wwarnings">Weather Warnings</a>
+                    </li>
+                    <li>
+                        <a href="account.html" id="account">Account</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="row">
+        <div class="col m2" id="leftmar">
+            <br>
+        </div>
+        <div class="col m8">
+            <div id="Login" class="landing">
+                <h1>User Login</h1>
+                <p>Log in to see any trips you've saved.</p>
+
+                <form id="login">
+
+                    <p id="loginUN" class="createCriteria">Username: </p>
+                    <input id="email" type="text">
+
+                    <p class="createCriteria">Password: </p>
+                    <input id="password" type="text">
+
+                    <br>
+
+                    <button id="loginbutton" class="loginbuttons" type="submit">
+                        <b>Log In</b>
+                    </button>
+                    <button class="loginbuttons" id="signOut">
+                        <b>Sign Out</b>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+        <div class="col m2" id="rightmar">
+            <br>
+        </div>
+    </div>
+
+    <footer class="page-footer">
+        © 2018 Via-Sol by Brock, Ross, Scott, and Taylor
+    </footer>
+
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="./assets/javascript/app.js"></script>
+
 </body>
 
 </html>
