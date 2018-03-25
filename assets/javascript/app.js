@@ -136,6 +136,7 @@ function calcRoute() {
             showSteps(response);
         } else {
             $( function() {
+                $("#error-dialog").html(" <p>The parameters you selected are invalid. Please select a time of departure within the next 3 days and a valid start and end location.</p>").css("background","white").css("border", "1px solid black");
                 $( "#error-dialog" ).dialog();
               } );
             setTimeout(function(){location.reload()},5000);
