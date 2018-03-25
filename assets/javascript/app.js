@@ -218,9 +218,242 @@ function showSteps(directionResult) {
                     console.log(curTemp);
                     var curObservationLower = curObservation.toLowerCase();
                     console.log(curObservation);
-                    if (curObservationLower === "overcast") {
-                        curObservationLower = "cloudy";
+                    switch (curObservationLower) {
+
+                        case "haze":
+                            curObservationLower = "hazy";
+                            break;
+
+                        case "freezingrain":
+                            curObservationLower = "sleet";
+                            break;
+
+                        case "overcast":
+                            curObservationLower = "cloudy";
+                            break;
+
+                        case "thunderstorms":
+                            curObservationLower = "tstorms";
+                            break;
+
+                        case "thunderstorm":
+                            curObservationLower = "tstorms";
+                            break;
+
+                        case "scatteredclouds":
+                            curObservationLower = "partlycloudy";
+                            break;
+
+                        case "lightdrizzle":
+                            curObservationLower = "flurries";
+                            break;
+
+                        case "heavydrizzle":
+                            curObservationLower = "flurries";
+                            break;
+
+                        case "lightrain":
+                            curObservationLower = "rain";
+                            break;
+
+                        case "heavyrain":
+                            curObservationLower = "rain";
+                            break;
+
+                        case "rain":
+                            curObservationLower = "rain"
+                            break;
+
+                        case "lightsnow":
+                            curObservationLower = "snow";
+                            break;
+
+                        case "heavysnow":
+                            curObservationLower = "snow";
+                            break;
+
+                        case "lightsnowgrains":
+                            curObservationLower = "snow";
+                            break;
+
+                        case "heavysnowgrains":
+                            curObservationLower = "snow";
+                            break;
+
+                        case "snowgrains":
+                            curObservationLower = "snow";
+                            break;
+
+                        case "lighticecrystals":
+                            curObservationLower = "snow";
+                            break;
+
+                        case "heavyicecrystals":
+                            curObservationLower = "snow";
+                            break;
+
+                        case "icecrystals":
+                            curObservationLower = "snow";
+                            break;
+
+                        case "lighticepellets":
+                            curObservationLower = "snow";
+                            break;
+
+                        case "heavyicepellets":
+                            curObservationLower = "snow";
+                            break;
+
+                        case "icepellets":
+                            curObservationLower = "snow";
+                            break;
+
+                        case "lighthail":
+                            curObservationLower = "snow";
+                            break;
+
+                        case "heavyhail":
+                            curObservationLower = "snow";
+                            break;
+
+                        case "hail":
+                            curObservationLower = "snow";
+                            break;
+
+                        case "lightmist":
+                            curObservationLower = "cloudy";
+                            break;
+
+                        case "heavymist":
+                            curObservationLower = "cloudy";
+                            break;
+
+                        case "mist":
+                            curObservationLower = "cloudy";
+                            break;
+
+                        case "lightfog":
+                            curObservationLower = "foggy";
+                            break;
+
+                        case "heavyfog":
+                            curObservationLower = "foggy";
+                            break;
+
+                        case "fog":
+                            curObservationLower = "foggy";
+                            break;
+
+                        case "lightfogpatches":
+                            curObservationLower = "foggy";
+                            break;
+
+                        case "heavyfogpatches":
+                            curObservationLower = "foggy";
+                            break;
+
+                        case "fogpatches":
+                            curObservationLower = "foggy";
+                            break;
+
+                        case "lightsmoke":
+                            curObservationLower = "foggy";
+                            break;
+
+                        case "heavysmoke":
+                            curObservationLower = "foggy";
+                            break;
+
+                        case "smoke":
+                            curObservationLower = "foggy";
+                            break;
+
+                        case "lightwidespreaddust":
+                            curObservationLower = "foggy";
+                            break;
+
+                        case "heavywidespreaddust":
+                            curObservationLower = "foggy";
+                            break;
+
+                        case "widespreaddust":
+                            curObservationLower = "foggy";
+                            break;
+
+                        case "lightwidespreaddust":
+                            curObservationLower = "foggy";
+                            break;
+
+                        case "lightsand":
+                            curObservationLower = "hazy";
+                            break;
+
+                        case "heavysand":
+                            curObservationLower = "hazy";
+                            break;
+
+                        case "sand":
+                            curObservationLower = "hazy";
+                            break;
+
+                        case "lighthaze":
+                            curObservationLower = "hazy";
+                            break;
+
+                        case "heavyhaze":
+                            curObservationLower = "hazy";
+                            break;
+
+                        case "lightsand":
+                            curObservationLower = "hazy";
+                            break;
+
+                        case "heavysand":
+                            curObservationLower = "hazy";
+                            break;
+
+                        case "sand":
+                            curObservationLower = "hazy";
+                            break;
+
+                        case "blowingsnow":
+                            curObservationLower = "snow";
+                            break;
+
+                        case "rainmist":
+                            curObservationLower = "rain";
+                            break;
+
+                        case "lightrainshowers":
+                            curObservationLower = "rain";
+                            break;
+
+                        case "heavyrainshowers":
+                            curObservationLower = "rain";
+                            break;
+
+                        case "rainshowers":
+                            curObservationLower = "rain";
+                            break;
+
+                        case "snowshowers":
+                            curObservationLower = "rain";
+                            break;
+
+                        case "freezingrain":
+                            curObservationLower = "rain";
+                            break;
+
+                        case "mostlycloudy":
+                            curObservationLower = "cloudy";
+                            break;
                     }
+
+
+
+
+
+
 
                     $("#weather-conditions").append("<Div>Temperature:" + curTemp + "Conditions:<img src=https://icons.wxug.com/i/c/k/" + curObservationLower + ".gif>" + curObservation + "Wind:" + curWinSpd + "Direction:" + curWind + "</Div>")
                     $("#weather-conditions").append("<Div>Temperature:" + curTemp + "</Div>")
@@ -265,29 +498,79 @@ function showSteps(directionResult) {
                     console.log(response.hourly_forecast[0].condition, response.hourly_forecast[0].wdir.dir, response.hourly_forecast[0].wspd.english, response.hourly_forecast[0].temp.english);
                     console.log(response)
                     // THIS FOR LOOP IS FOR APPENDING HTML DATA FOR HOURLY FORECAST
-                    
-                        console.log(response.hourly_forecast[hoursAway].condition, response.hourly_forecast[hoursAway].wdir.dir, response.hourly_forecast[hoursAway].wspd.english, response.hourly_forecast[hoursAway].temp.english);
-                        var forCondition = response.hourly_forecast[hoursAway].condition;
-                        var forWdir = response.hourly_forecast[hoursAway].wdir.dir;
-                        var forWspd = response.hourly_forecast[hoursAway].wspd.english;
-                        var forTemp = response.hourly_forecast[hoursAway].temp.english;
-                        var forObservationLower = response.hourly_forecast[hoursAway].condition.toLowerCase();
-                        console.log(forCondition);
-                        console.log(forWdir);
-                        console.log(forWspd);
-                        console.log(forTemp);
-                        if (forObservationLower === "overcast") {
-                            forObservationLower = "cloudy";
-                        }
 
-                        if (forObservationLower === "thunderstorm") {
-                            forObservationLower = "tstorms";
-                        }
+                    console.log(response.hourly_forecast[hoursAway].condition, response.hourly_forecast[hoursAway].wdir.dir, response.hourly_forecast[hoursAway].wspd.english, response.hourly_forecast[hoursAway].temp.english);
+                    var forCondition = response.hourly_forecast[hoursAway].condition;
+                    var forWdir = response.hourly_forecast[hoursAway].wdir.dir;
+                    var forWspd = response.hourly_forecast[hoursAway].wspd.english;
+                    var forTemp = response.hourly_forecast[hoursAway].temp.english;
+                    var forObservationLower = response.hourly_forecast[hoursAway].condition.toLowerCase().split(' ').join('');
+                    console.log(forCondition);
+                    console.log(forWdir);
+                    console.log(forWspd);
+                    console.log(forTemp);
 
-                        $("#weather-conditions").append("<Div>FORCASTin"+hoursAway+"HOURS  Temperature:" + forTemp + "Conditions:<img src=https://icons.wxug.com/i/c/k/" + forObservationLower + ".gif>" + forObservationLower + "Wind:" + forWspd + "Direction:" + forWdir + "</Div>")
+                    switch (forObservationLower) {
+                        case "chanceofrain":
+                            forObservationLower = "chancerain"
+                            break;
+
+                        case "chanceoflurries":
+                            forObservationLower = "chanceflurries"
+                            break;
+
+                        case "chanceoffreezingrain":
+                            forObservationLower = "chancesleet";
+                            break;
+
+                        case "chanceoflsleet":
+                            forObservationLower = "chancesleet";
+                            break;
+
+                        case "chanceofsnow":
+                            forObservationLower = "chancesnow";
+                            break;
+
+                        case "chanceofthunderstorms":
+                            forObservationLower = "chancetstorms"
+                            break;
+
+                        case "haze":
+                            curObservationLower = "hazy";
+                            break;
+
+                        case "freezingrain":
+                            curObservationLower = "sleet";
+                            break;
+
+                        case "overcast":
+                            curObservationLower = "cloudy";
+                            break;
+
+                        case "thunderstorms":
+                            curObservationLower = "tstorms";
+                            break;
+
+                        case "thunderstorm":
+                            curObservationLower = "tstorms";
+                            break;
+
+                        case "scatteredclouds":
+                            curObservationLower = "partlycloudy";
+                            break;
+
+                        case "fog":
+                            curObservationLower = "foggy";
+                            break;
+
+                      
+                    }
 
 
-                    })
+                    $("#weather-conditions").append("<Div>FORCASTin" + hoursAway + "HOURS  Temperature:" + forTemp + "Conditions:<img src=https://icons.wxug.com/i/c/k/" + forObservationLower + ".gif>" + forObservationLower + "Wind:" + forWspd + "Direction:" + forWdir + "</Div>")
+
+
+                })
 
 
         })
