@@ -178,8 +178,8 @@ function showSteps(directionResult) {
     console.log(hoursAway);
 
     // TO FIND NEAREST CITY AND STATE FROM GEOCODE LAT LONG (COMMENTED OUT UNTIL WE PLUGIN MAP DATA)
-    var startCityStateURL = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + startLat + "," + startLng + ".json";
-    var endCityStateURL = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + endLat + "," + endLng + ".json";
+    var startCityStateURL = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + startLat + "," + startLng + ".json";
+    var endCityStateURL = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + endLat + "," + endLng + ".json";
 
     // Here we run our AJAX call to the Wunderground API TO CONVERT GEOCODE LAT LONG TO NEAREST CITY AND STATE WEATHER STATION
     $.ajax({
@@ -198,8 +198,8 @@ function showSteps(directionResult) {
 
             console.log(cityReplaced);
             // TO FIND CONDITIONS FROM NEAREST CITY AND STATE(WILL BE USED BOTH FOR START AND END LOCATIONS)
-            var queryURLconditions = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/conditions/q/" + startState + "/" + cityReplaced + ".json";
-            var queryURLhourly = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/hourly/q/" + state + "/" + cityReplaced + ".json";
+            var queryURLconditions = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/conditions/q/" + startState + "/" + cityReplaced + ".json";
+            var queryURLhourly = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/hourly/q/" + state + "/" + cityReplaced + ".json";
 
             $.ajax({
                 url: queryURLconditions,
@@ -349,7 +349,7 @@ function showSteps(directionResult) {
                             break;
 
 
-                    $("#weather-conditions").append("<Div>Departure City Temperature: " + curTemp + "</Div>")
+                    $("#weather-conditions").append("<Div>Departure City Temperature: " + curTemp + "°</Div>")
 
                         case "heavyfogpatches":
                             curObservationLower = "foggy";
@@ -458,8 +458,12 @@ function showSteps(directionResult) {
 
 
 
-                    $("#weather-conditions").append("<Div>Temperature:" + curTemp + "Conditions:<img src=https://icons.wxug.com/i/c/k/" + curObservationLower + ".gif>" + curObservation + "Wind:" + curWinSpd + "Direction:" + curWind + "</Div>")
-                    $("#weather-conditions").append("<Div>Temperature:" + curTemp + "</Div>")
+
+
+                    $("#weather-conditions").append("<div>"+startCity +"," + startState + "  Current Weather </div><br/>") 
+                    $("#weather-conditions").append("<div> Temperature:" + curTemp + "°</div><br/>")
+                    $("#weather-conditions").append("<div> <img src=https://icons.wxug.com/i/c/k/" + curObservationLower + ".gif>" + curObservationLower)
+                    $("#weather-conditions").append("<div> Wind: " + curWinSpd + "mph  Direction: " + curWind + "</div><br/><div></div><br/>")
 
 
 
@@ -488,8 +492,8 @@ function showSteps(directionResult) {
             console.log(response.location.city);
 
             // TO FIND CONDITIONS FROM NEAREST CITY AND STATE(WILL BE USED BOTH FOR START AND END LOCATIONS)
-            var queryURLconditions = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/conditions/q/" + endState + "/" + cityReplaced + ".json";
-            var queryURLhourly = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/hourly/q/" + endState + "/" + cityReplaced + ".json";
+            var queryURLconditions = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/conditions/q/" + endState + "/" + cityReplaced + ".json";
+            var queryURLhourly = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/hourly/q/" + endState + "/" + cityReplaced + ".json";
             $.ajax({
                 url: queryURLhourly,
                 method: "GET"
@@ -571,7 +575,11 @@ function showSteps(directionResult) {
                     }
 
 
-                    $("#weather-conditions").append("<Div>FORCASTin" + hoursAway + "HOURS  Temperature:" + forTemp + "Conditions:<img src=https://icons.wxug.com/i/c/k/" + forObservationLower + ".gif>" + forObservationLower + "Wind:" + forWspd + "Direction:" + forWdir + "</Div>")
+                    $("#weather-conditions").append("<div>"+endCity +"," + endState + "   weather upon arrival in " + hoursAway + " hours </div><br/>") 
+                    $("#weather-conditions").append("<div> Temperature:" + forTemp + "°</div><br/>")
+                    $("#weather-conditions").append("<div> <img src=https://icons.wxug.com/i/c/k/" + forObservationLower + ".gif>" + forObservationLower)
+                    $("#weather-conditions").append("<div> Wind: " + forWspd + "mph  Direction: " + forWdir + "</div>")
+                   
 
 
                 })
