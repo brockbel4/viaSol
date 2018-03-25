@@ -134,6 +134,8 @@ function calcRoute() {
         if (status == 'OK') {
             directionsDisplay.setDirections(response);
             showSteps(response);
+        } else {
+            location.reload();
         }
     });
 
