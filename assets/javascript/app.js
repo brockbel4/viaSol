@@ -348,6 +348,9 @@ function showSteps(directionResult) {
                             curObservationLower = "foggy";
                             break;
 
+
+                    $("#weather-conditions").append("<Div>Departure City Temperature: " + curTemp + "</Div>")
+
                         case "heavyfogpatches":
                             curObservationLower = "foggy";
                             break;
@@ -459,11 +462,12 @@ function showSteps(directionResult) {
                     $("#weather-conditions").append("<Div>Temperature:" + curTemp + "</Div>")
 
 
+
                 })
 
         })
 
-
+         
 
 
 
