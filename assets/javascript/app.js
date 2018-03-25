@@ -175,7 +175,25 @@ function showSteps(directionResult) {
     } else {
         hoursAway = tripHours;
     }
-    console.log(hoursAway);
+    // console.log(hoursAway);
+    // group of code to store lat longs along the route
+    var polyline = directionsDisplay.directions.routes["0"].overview_path
+    var verticesCount = polyline.length;
+    console.log(verticesCount);
+    var stepCounter = verticesCount / 4
+    console.log(stepCounter);
+    var increment1 = Math.round(stepCounter);
+    var increment2 = Math.round(stepCounter * 2);
+    var increment3 = Math.round(stepCounter * 3);
+    var tripStep1lat = polyline[0 + increment1].lat();
+    var tripStep1lng = polyline[0 + increment1].lng();
+    var tripStep2lat = polyline[0 + increment2].lat();
+    var tripStep2lng = polyline[0 + increment2].lng();
+    var tripStep3lat = polyline[0 + increment3].lat();
+    var tripStep3lng = polyline[0 + increment3].lng();
+    // console.log("Location 1: " + tripStep1lat + ", " + tripStep1lng + " " +
+        // "Location 2: " + tripStep2lat + ", " + tripStep2lng + " " +
+        // "Location 3: " + tripStep3lat + ", " + tripStep3lng);
 
     // TO FIND NEAREST CITY AND STATE FROM GEOCODE LAT LONG (COMMENTED OUT UNTIL WE PLUGIN MAP DATA)
     var startCityStateURL = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + startLat + "," + startLng + ".json";
