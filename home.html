@@ -64,11 +64,11 @@
 
     <div class="row">
         <div class="col m3" id="hleftmar">
-            <div id="input">
+            <div id="input" class="landing">
                 <form id="user-input">
                     <p class="criteria" id="starting">Starting Location: </p>
                     <input type="text" id="start-location">
-                   
+
                     <p class="criteria">Destination: </p>
                     <input type="text" id="end-location">
 
@@ -77,8 +77,10 @@
 
                     <p class="criteria">Departure Time: </p>
                     <input type="time" name="time" id="time">
-
-                    <button id="search" type="submit">Go!</button>
+                    <br>
+                    <button id="search" type="submit">
+                        <b>Go!</b>
+                    </button>
                 </form>
             </div>
             <div id="weather-conditions">
@@ -90,7 +92,13 @@
             </div>
         </div>
         <div class="col m3" id="hleftmar">
-            <div id="directionsPanel">
+            <div id="directionsPanel" class="landing">
+                <p id="introtext">
+                <br> Fill in all of your trip information, then click go. We'll show you your route, a forecast of the weather along your
+                trip, as well as step- by- step directions.
+                <br>
+                <br>
+                </p>
             </div>
         </div>
     </div>

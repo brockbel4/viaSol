@@ -206,14 +206,14 @@ function showSteps(directionResult) {
                     var curObservationLower = curObservation.toLowerCase();
                     console.log(curObservation);
 
-                    $("#weather-conditions").append("<Div>Temperature:" + curTemp + "</Div>")
+                    $("#weather-conditions").html("<Div>Departure City Temperature: " + curTemp + "</Div>")
 
 
                 })
 
         })
 
-
+         
 
 
 
