@@ -226,10 +226,14 @@ input {
     margin-left: 3%;
     margin-top: 5%;
 }
+element.style {
+    overflow: auto;
+}
 #map {
     height: 100%;
     margin-top: 0%;
     margin-left: 0%;
+    overflow: auto;
   }
 @media print {
     #map {
@@ -245,4 +249,23 @@ html, body {
     height: 500px;
     margin-bottom: 200px;
     margin-top: 0%;
+}
+.adp-summary {
+    color: white;
+}
+.adp-substep {
+    color: white;
+}
+.adp-legal {
+    color: white;
+}
+@media only screen and (max-width: 640px) {
+    #entirecontent {
+        padding: 0;
+        width: 100%;
+        height: 100%;
+    }
+    body {
+        background: linear-gradient(darkcyan, darkcyan, darkblue);
+    }
 }

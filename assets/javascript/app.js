@@ -602,7 +602,7 @@ $(document).on("click", "#search", function calculateAndDisplayRoute() {
     calcRoute();
     $("#input").hide();
     $("#weather-conditions").show();
-
+    $("#introtext").css("display", "none");
 })
 
 // <!--START WEATHER API'S BELOW  -->
