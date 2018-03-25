@@ -131,14 +131,14 @@ function calcRoute() {
     };
     console.log(directionsService);
     directionsService.route(request, function (response, status) {
-        if (status == 'OK' && N > 0 && N < 259200000) {
+        if (status == 'OK' && N >= 0 && N <= 259200000 ||status == 'OK' && isNaN(N)) {
             directionsDisplay.setDirections(response);
             showSteps(response);
         } else {
             $( function() {
                 $( "#error-dialog" ).dialog();
               } );
-            setTimeout(function(){location.reload()},7000);
+            setTimeout(function(){location.reload()},5000);
         }
     });
 
