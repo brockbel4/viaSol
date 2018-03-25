@@ -348,9 +348,6 @@ function showSteps(directionResult) {
                             curObservationLower = "foggy";
                             break;
 
-
-                    $("#weather-conditions").append("<Div>Departure City Temperature: " + curTemp + "°</Div>")
-
                         case "heavyfogpatches":
                             curObservationLower = "foggy";
                             break;
@@ -544,31 +541,31 @@ function showSteps(directionResult) {
                             break;
 
                         case "haze":
-                            curObservationLower = "hazy";
+                            forObservationLower = "hazy";
                             break;
 
                         case "freezingrain":
-                            curObservationLower = "sleet";
+                            forObservationLower = "sleet";
                             break;
 
                         case "overcast":
-                            curObservationLower = "cloudy";
+                            forObservationLower = "cloudy";
                             break;
 
                         case "thunderstorms":
-                            curObservationLower = "tstorms";
+                            forObservationLower = "tstorms";
                             break;
 
                         case "thunderstorm":
-                            curObservationLower = "tstorms";
+                            forObservationLower = "tstorms";
                             break;
 
                         case "scatteredclouds":
-                            curObservationLower = "partlycloudy";
+                            forObservationLower = "partlycloudy";
                             break;
 
                         case "fog":
-                            curObservationLower = "foggy";
+                            forObservationLower = "foggy";
                             break;
 
                       
