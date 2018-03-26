@@ -146,11 +146,10 @@ html, body {
     height: fit-content; */
 /* } */
 #input {
-    margin-top: 0%;
     margin-left: 2%;
     margin-right: 1%;
     background-color: none;
-    height: 390px;
+
 }
 .createInput {
     border-bottom: none;
@@ -273,16 +272,14 @@ footer.page-footer {
     margin-bottom: 0%;
     margin-left: 3%;
 }
-input {
+#input {
     margin-left: 3%;
-    margin-top: 5%;
 }
 element.style {
     overflow: auto;
 }
 #map {
     height: 100%;
-    margin-top: 0%;
     margin-left: 0%;
     overflow: auto;
   }

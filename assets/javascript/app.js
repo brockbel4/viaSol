@@ -1,8 +1,14 @@
+$(document).ready(function() {
+    $('#weather-conditions').hide();
+    $('#origin-weather').hide();
+    $('#destination-weather').hide();
+    $('#log-in').hide();
+    $('#point1').hide();
+    $('#point2').hide();
+    $('#point3').hide();
+})
+
 console.log("AHSOGHASOGHASOGHAS");
-$('#weather-conditions').hide();
-$('#origin-weather').hide();
-$('#destination-weather').hide();
-$('#log-in').hide();
 
 
 
