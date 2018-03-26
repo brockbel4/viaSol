@@ -2,10 +2,6 @@ console.log("AHSOGHASOGHASOGHAS");
 $('#weather-conditions').hide();
 $('#log-in').hide();
 
-$( document ).ready(function(){
-    $(".button-collapse").sideNav();
-
-})
 
 
 // Initialize Firebase
@@ -50,6 +46,7 @@ function logInActivation(f) {
         // ...
     });
 }
+
 // This button allows the user to signout of their account
 $("#signOut").click(function (e) {
     e.preventDefault();
@@ -498,10 +495,6 @@ function showSteps(directionResult) {
         })
 
          
-
-
-
-
 
     $.ajax({
         url: endCityStateURL,
