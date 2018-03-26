@@ -131,15 +131,15 @@ function calcRoute() {
     };
     console.log(directionsService);
     directionsService.route(request, function (response, status) {
-        if (status == 'OK' && N >= 0 && N <= 259200000 ||status == 'OK' && isNaN(N)) {
+        if (status == 'OK' && N >= 0 && N <= 259200000 || status == 'OK' && isNaN(N)) {
             directionsDisplay.setDirections(response);
             showSteps(response);
         } else {
-            $( function() {
-                $("#error-dialog").html(" <p>The parameters you selected are invalid. Please select a time of departure within the next 3 days and a valid start and end location.</p>").css("background","white").css("border", "1px solid black");
-                $( "#error-dialog" ).dialog();
-              } );
-            setTimeout(function(){location.reload()},5000);
+            $(function () {
+                $("#error-dialog").html(" <p>The parameters you selected are invalid. Please select a time of departure within the next 3 days and a valid start and end location.</p>").css("background", "white").css("border", "1px solid black");
+                $("#error-dialog").dialog();
+            });
+            setTimeout(function () { location.reload() }, 5000);
         }
     });
 
@@ -198,12 +198,15 @@ function showSteps(directionResult) {
     var tripStep3lat = polyline[0 + increment3].lat();
     var tripStep3lng = polyline[0 + increment3].lng();
     // console.log("Location 1: " + tripStep1lat + ", " + tripStep1lng + " " +
-        // "Location 2: " + tripStep2lat + ", " + tripStep2lng + " " +
-        // "Location 3: " + tripStep3lat + ", " + tripStep3lng);
+    // "Location 2: " + tripStep2lat + ", " + tripStep2lng + " " +
+    // "Location 3: " + tripStep3lat + ", " + tripStep3lng);
 
     // TO FIND NEAREST CITY AND STATE FROM GEOCODE LAT LONG (COMMENTED OUT UNTIL WE PLUGIN MAP DATA)
     var startCityStateURL = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + startLat + "," + startLng + ".json";
     var endCityStateURL = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + endLat + "," + endLng + ".json";
+    var tripStep1queryURL = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + tripStep1lat + "," + tripStep1lng + ".json";
+    var tripStep2queryURL = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + tripStep2lat + "," + tripStep2lng + ".json";
+    var tripStep3queryURL = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + tripStep3lat + "," + tripStep3lng + ".json";
 
     // Here we run our AJAX call to the Wunderground API TO CONVERT GEOCODE LAT LONG TO NEAREST CITY AND STATE WEATHER STATION
     $.ajax({
@@ -224,6 +227,7 @@ function showSteps(directionResult) {
             // TO FIND CONDITIONS FROM NEAREST CITY AND STATE(WILL BE USED BOTH FOR START AND END LOCATIONS)
             var queryURLconditions = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/conditions/q/" + startState + "/" + cityReplaced + ".json";
             var queryURLhourly = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/hourly/q/" + state + "/" + cityReplaced + ".json";
+
 
             $.ajax({
                 url: queryURLconditions,
@@ -481,10 +485,10 @@ function showSteps(directionResult) {
 
 
 
-                    $("#weather-conditions").append("<div>"+startCity +"," + startState + "  Current Weather </div><br/>") 
-                    $("#weather-conditions").append("<div> Temperature:" + curTemp + "°</div><br/>")
-                    $("#weather-conditions").append("<div> <img src=https://icons.wxug.com/i/c/k/" + curObservationLower + ".gif>" + curObservationLower)
-                    $("#weather-conditions").append("<div> Wind: " + curWinSpd + "mph  Direction: " + curWind + "</div><br/><div></div><br/>")
+                    $("#weather-conditions").prepend("<div>" + startCity + "," + startState + "  Current Weather </div><br/>")
+                    $("#weather-conditions").prepend("<div> Temperature:" + curTemp + "°</div><br/>")
+                    $("#weather-conditions").prepend("<div> <img src=https://icons.wxug.com/i/c/k/" + curObservationLower + ".gif>" + curObservationLower)
+                    $("#weather-conditions").prepend("<div> Wind: " + curWinSpd + "mph  Direction: " + curWind + "</div><br/><div></div><br/>")
 
 
 
@@ -492,7 +496,7 @@ function showSteps(directionResult) {
 
         })
 
-         
+
 
 
 
@@ -505,7 +509,6 @@ function showSteps(directionResult) {
         .then(function (response) {
             var APIKey = "1a7471eee44adb74";
             console.log(response);
-            console.log(response);
             console.log(response.location.state);
             endState = response.location.state;
             endCity = response.location.city;
@@ -515,6 +518,7 @@ function showSteps(directionResult) {
             // TO FIND CONDITIONS FROM NEAREST CITY AND STATE(WILL BE USED BOTH FOR START AND END LOCATIONS)
             var queryURLconditions = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/conditions/q/" + endState + "/" + cityReplaced + ".json";
             var queryURLhourly = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/hourly/q/" + endState + "/" + cityReplaced + ".json";
+
             $.ajax({
                 url: queryURLhourly,
                 method: "GET"
@@ -525,8 +529,8 @@ function showSteps(directionResult) {
                     console.log(queryURLhourly);
                     console.log(response);
                     console.log(response.hourly_forecast[0].condition, response.hourly_forecast[0].wdir.dir, response.hourly_forecast[0].wspd.english, response.hourly_forecast[0].temp.english);
-                    console.log(response)
-                    // THIS FOR LOOP IS FOR APPENDING HTML DATA FOR HOURLY FORECAST
+
+                    // FOR APPENDING HTML DATA FOR HOURLY FORECAST
 
                     console.log(response.hourly_forecast[hoursAway].condition, response.hourly_forecast[hoursAway].wdir.dir, response.hourly_forecast[hoursAway].wspd.english, response.hourly_forecast[hoursAway].temp.english);
                     var forCondition = response.hourly_forecast[hoursAway].condition;
@@ -534,10 +538,7 @@ function showSteps(directionResult) {
                     var forWspd = response.hourly_forecast[hoursAway].wspd.english;
                     var forTemp = response.hourly_forecast[hoursAway].temp.english;
                     var forObservationLower = response.hourly_forecast[hoursAway].condition.toLowerCase().split(' ').join('');
-                    console.log(forCondition);
-                    console.log(forWdir);
-                    console.log(forWspd);
-                    console.log(forTemp);
+
 
                     switch (forObservationLower) {
                         case "chanceofrain":
@@ -592,21 +593,173 @@ function showSteps(directionResult) {
                             forObservationLower = "foggy";
                             break;
 
-                      
+
                     }
 
 
-                    $("#weather-conditions").append("<div>"+endCity +"," + endState + "   weather upon arrival in " + hoursAway + " hours </div><br/>") 
-                    $("#weather-conditions").append("<div> Temperature:" + forTemp + "°</div><br/>")
-                    $("#weather-conditions").append("<div> <img src=https://icons.wxug.com/i/c/k/" + forObservationLower + ".gif>" + forObservationLower)
-                    $("#weather-conditions").append("<div> Wind: " + forWspd + "mph  Direction: " + forWdir + "</div>")
-                   
+                    $("#origin-weather").append("<div>" + endCity + "," + endState + "   weather upon arrival in " + hoursAway + " hours </div><br/>")
+                    $("#origin-weather").append("<div> Temperature:" + forTemp + "°</div><br/>")
+                    $("#origin-weather").append("<div> <img src=https://icons.wxug.com/i/c/k/" + forObservationLower + ".gif>" + forObservationLower)
+                    $("#origin-weather").append("<div> Wind: " + forWspd + "mph  Direction: " + forWdir + "</div>")
+
 
 
                 })
 
 
         })
+
+
+
+    $.ajax({
+        url: tripStep1queryURL,
+        method: "GET"
+    })
+        .then(function (response) {
+            console.log(response);
+            console.log(response.location.state);
+            ts1State = response.location.state;
+            ts1City = response.location.city;
+            cityReplaced = ts1City.split(' ').join('_');
+
+            var ts1URLhourly = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/hourly/q/" + ts1State + "/" + cityReplaced + ".json";
+
+            $.ajax({
+                url: ts1URLhourly,
+                method: "GET"
+            })
+                .then(function (response) {
+                    var ts1hoursAway = (Math.round(hoursAway / 3));
+                    console.log(ts1hoursAway);
+
+
+
+                    // LOGGING TO TEST RESPONSES
+                    console.log(ts1URLhourly);
+                    console.log(response);
+                    console.log(response.hourly_forecast[0].condition, response.hourly_forecast[0].wdir.dir, response.hourly_forecast[0].wspd.english, response.hourly_forecast[0].temp.english);
+
+                    // FOR APPENDING HTML DATA FOR HOURLY FORECAST
+
+                    console.log(response.hourly_forecast[ts1hoursAway].condition, response.hourly_forecast[ts1hoursAway].temp.english);
+                    var conPt1=response.hourly_forecast[ts1hoursAway].condition;
+                    var tempPt1=response.hourly_forecast[ts1hoursAway].temp.english;
+                    if (ts1hoursAway>1){
+                    $("#point1").append("<div>Forcasted Conditions  "+ ts1hoursAway +" Hour(s) Driving</div><br/>");
+                    $("#point1").append("<div>Condition:  " + conPt1 + "</div><br/>");
+                    $("#point1").append("<div>Temperature:  "+ tempPt1 + "° </div><br/>");    
+                    }
+                })
+
+        })
+
+    $.ajax({
+        url: tripStep2queryURL,
+        method: "GET"
+    })
+        .then(function (response) {
+            console.log(response);
+            console.log(response.location.state);
+            ts2State = response.location.state;
+            ts2City = response.location.city;
+            cityReplaced = ts2City.split(' ').join('_');
+
+            var ts2URLhourly = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/hourly/q/" + ts2State + "/" + cityReplaced + ".json";
+
+            $.ajax({
+                url: ts2URLhourly,
+                method: "GET"
+            })
+                .then(function (response) {
+                    var ts2hoursAway = (Math.round(hoursAway/2));
+                    console.log(ts2hoursAway);
+
+
+
+                    // LOGGING TO TEST RESPONSES
+                    console.log(ts2URLhourly);
+                    console.log(response);
+                    console.log(response.hourly_forecast[0].condition, response.hourly_forecast[0].wdir.dir, response.hourly_forecast[0].wspd.english, response.hourly_forecast[0].temp.english);
+
+                    // FOR APPENDING HTML DATA FOR HOURLY FORECAST
+
+                    console.log(response.hourly_forecast[ts2hoursAway].condition, response.hourly_forecast[ts2hoursAway].temp.english);
+                    var conPt2=response.hourly_forecast[ts2hoursAway].condition;
+                    var tempPt2=response.hourly_forecast[ts2hoursAway].temp.english;
+                    if (ts2hoursAway>1){
+                    $("#point2").append("<div>Forcasted Conditions  "+ ts2hoursAway +" Hour(s) Driving</div><br/>");
+                    $("#point2").append("<div>Condition:  " + conPt2 + "</div><br/>");
+                    $("#point2").append("<div>Temperature:  "+ tempPt2 + "° </div><br/>");    
+                    }
+
+                })
+
+
+
+
+        })
+
+    $.ajax({
+        url: tripStep3queryURL,
+        method: "GET"
+    })
+        .then(function (response) {
+            console.log(response);
+            console.log(response.location.state);
+            ts3State = response.location.state;
+            ts3City = response.location.city;
+            cityReplaced = ts3City.split(' ').join('_');
+
+            var ts3URLhourly = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/hourly/q/" + ts3State + "/" + cityReplaced + ".json";
+
+            $.ajax({
+                url: ts3URLhourly,
+                method: "GET"
+            })
+                .then(function (response) {
+                    var ts3hoursAway = (Math.round(hoursAway - (Math.round(hoursAway/3))));
+                    console.log(ts3hoursAway);
+
+
+
+                    // LOGGING TO TEST RESPONSES
+                    console.log(ts3URLhourly);
+                    console.log(response);
+                    console.log(response.hourly_forecast[0].condition, response.hourly_forecast[0].wdir.dir, response.hourly_forecast[0].wspd.english, response.hourly_forecast[0].temp.english);
+
+                    // FOR APPENDING HTML DATA FOR HOURLY FORECAST
+
+                    console.log(response.hourly_forecast[ts3hoursAway].condition, response.hourly_forecast[ts3hoursAway].temp.english);
+                    
+                    var conPt3=response.hourly_forecast[ts3hoursAway].condition;
+                    var tempPt3=response.hourly_forecast[ts3hoursAway].temp.english;
+                    if (ts3hoursAway>2){
+                    $("#point3").append("<div>Forcasted Conditions  "+ ts3hoursAway +" Hour(s) Driving</div><br/>");
+                    $("#point3").append("<div>Condition:  " + conPt3 + "</div><br/>");
+                    $("#point3").append("<div>Temperature:  "+ tempPt3 + "° </div><br/>");    
+                    }
+
+
+                })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        })
+
+
+
+
 
 
 
