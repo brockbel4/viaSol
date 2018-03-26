@@ -18,40 +18,39 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
     <!--Import materialize.css-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
     </script>
 
     <!-- Linking in Style.css (custom css file) -->
     <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="./assets/javascript/app.js"></script>
 
 </head>
 
 <body>
-    <!-- Linking in JQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-        <!-- Linking in Firebase -->
-        <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+    <!-- Linking in Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
     <!-- Linking in bootstraps JS
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script> -->
 
     <!-- Linking in app.js (custom javascript file containing our logic) -->
-    <script src="./assets/javascript/app.js"></script>
-
-    <!--linking in Weather Underground API-->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"> </script>
 
     <div class="row">
         <nav>
             <div class="nav-wrapper">
                 <a href="home.html" class="brand-logo">
                     <img src="./assets/images/via-sol.png" alt="via-sol-logo" id="logo" a href="home.html">
+                </a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse">
+                    <i class="material-icons">menu</i>
                 </a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li>
@@ -64,7 +63,19 @@
                         <a href="account.html" id="account">Account</a>
                     </li>
                 </ul>
+                <ul id="mobile-demo" class="side-nav">
+                    <li>
+                        <a href="home.html" id="home">Home</a>
+                    </li>
+                    <li>
+                        <a href="warnings.html" id="wwarnings">Weather Warnings</a>
+                    </li>
+                    <li>
+                        <a href="account.html" id="account">Account</a>
+                    </li>
+                </ul>
             </div>
+
         </nav>
     </div>
 
@@ -74,7 +85,7 @@
         </div>
         <div class="col m8">
             <div id="welcome" class="landing">
-                <h1>Welcome!</h1> 
+                <h1>Welcome!</h1>
                 <p id="disclaimer">Via-Sol is a web application where you can not only find directions to your next roadtrip destination, but
                     it will also alert you of any inclimate or harsh weather conditions along the way. This website is made
                     to help you, not hurt you, so always be aware of your surroundings.</p>

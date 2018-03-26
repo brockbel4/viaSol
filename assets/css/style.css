@@ -34,6 +34,8 @@ body {
 html, body {
     padding: none;
     margin: none;
+    min-height: 100%;
+    
 }
 #logo {
     margin-top: 3%;
@@ -92,7 +94,7 @@ html, body {
     border-color: gray;
     border-radius: 5%;
     height: fit-content; */
-}
+/* } */
 #input {
     margin-top: 0%;
     margin-left: 2%;
@@ -261,6 +263,7 @@ element.style {
     }
     body {
         background: linear-gradient(darkcyan, darkcyan, darkblue);
+        background-image: none;
 
     }
   #wwarnings {
@@ -269,4 +272,9 @@ element.style {
   #home {
     color: rgba(39, 32, 32, 0.8);
 }
+}
+#error-dialog{
+    /* background: white; */
+    padding: 3px;
+    /* border: 1px solid black; */
 }

@@ -136,9 +136,15 @@ function calcRoute() {
     };
     console.log(directionsService);
     directionsService.route(request, function (response, status) {
-        if (status == 'OK') {
+        if (status == 'OK' && N >= 0 && N <= 259200000 ||status == 'OK' && isNaN(N)) {
             directionsDisplay.setDirections(response);
             showSteps(response);
+        } else {
+            $( function() {
+                $("#error-dialog").html(" <p>The parameters you selected are invalid. Please select a time of departure within the next 3 days and a valid start and end location.</p>").css("background","white").css("border", "1px solid black");
+                $( "#error-dialog" ).dialog();
+              } );
+            setTimeout(function(){location.reload()},5000);
         }
     });
 
@@ -180,11 +186,29 @@ function showSteps(directionResult) {
     } else {
         hoursAway = tripHours;
     }
-    console.log(hoursAway);
+    // console.log(hoursAway);
+    // group of code to store lat longs along the route
+    var polyline = directionsDisplay.directions.routes["0"].overview_path
+    var verticesCount = polyline.length;
+    console.log(verticesCount);
+    var stepCounter = verticesCount / 4
+    console.log(stepCounter);
+    var increment1 = Math.round(stepCounter);
+    var increment2 = Math.round(stepCounter * 2);
+    var increment3 = Math.round(stepCounter * 3);
+    var tripStep1lat = polyline[0 + increment1].lat();
+    var tripStep1lng = polyline[0 + increment1].lng();
+    var tripStep2lat = polyline[0 + increment2].lat();
+    var tripStep2lng = polyline[0 + increment2].lng();
+    var tripStep3lat = polyline[0 + increment3].lat();
+    var tripStep3lng = polyline[0 + increment3].lng();
+    // console.log("Location 1: " + tripStep1lat + ", " + tripStep1lng + " " +
+        // "Location 2: " + tripStep2lat + ", " + tripStep2lng + " " +
+        // "Location 3: " + tripStep3lat + ", " + tripStep3lng);
 
     // TO FIND NEAREST CITY AND STATE FROM GEOCODE LAT LONG (COMMENTED OUT UNTIL WE PLUGIN MAP DATA)
-    var startCityStateURL = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + startLat + "," + startLng + ".json";
-    var endCityStateURL = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + endLat + "," + endLng + ".json";
+    var startCityStateURL = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + startLat + "," + startLng + ".json";
+    var endCityStateURL = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/geolookup/q/" + endLat + "," + endLng + ".json";
 
     // Here we run our AJAX call to the Wunderground API TO CONVERT GEOCODE LAT LONG TO NEAREST CITY AND STATE WEATHER STATION
     $.ajax({
@@ -203,8 +227,8 @@ function showSteps(directionResult) {
 
             console.log(cityReplaced);
             // TO FIND CONDITIONS FROM NEAREST CITY AND STATE(WILL BE USED BOTH FOR START AND END LOCATIONS)
-            var queryURLconditions = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/conditions/q/" + startState + "/" + cityReplaced + ".json";
-            var queryURLhourly = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/hourly/q/" + state + "/" + cityReplaced + ".json";
+            var queryURLconditions = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/conditions/q/" + startState + "/" + cityReplaced + ".json";
+            var queryURLhourly = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/hourly/q/" + state + "/" + cityReplaced + ".json";
 
             $.ajax({
                 url: queryURLconditions,
@@ -353,9 +377,6 @@ function showSteps(directionResult) {
                             curObservationLower = "foggy";
                             break;
 
-
-                    $("#weather-conditions").append("<Div>Departure City Temperature: " + curTemp + "</Div>")
-
                         case "heavyfogpatches":
                             curObservationLower = "foggy";
                             break;
@@ -463,8 +484,12 @@ function showSteps(directionResult) {
 
 
 
-                    $("#weather-conditions").append("<Div>Temperature:" + curTemp + "Conditions:<img src=https://icons.wxug.com/i/c/k/" + curObservationLower + ".gif>" + curObservation + "Wind:" + curWinSpd + "Direction:" + curWind + "</Div>")
-                    $("#weather-conditions").append("<Div>Temperature:" + curTemp + "</Div>")
+
+
+                    $("#weather-conditions").append("<div>"+startCity +"," + startState + "  Current Weather </div><br/>") 
+                    $("#weather-conditions").append("<div> Temperature:" + curTemp + "°</div><br/>")
+                    $("#weather-conditions").append("<div> <img src=https://icons.wxug.com/i/c/k/" + curObservationLower + ".gif>" + curObservationLower)
+                    $("#weather-conditions").append("<div> Wind: " + curWinSpd + "mph  Direction: " + curWind + "</div><br/><div></div><br/>")
 
 
 
@@ -493,8 +518,8 @@ function showSteps(directionResult) {
             console.log(response.location.city);
 
             // TO FIND CONDITIONS FROM NEAREST CITY AND STATE(WILL BE USED BOTH FOR START AND END LOCATIONS)
-            var queryURLconditions = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/conditions/q/" + endState + "/" + cityReplaced + ".json";
-            var queryURLhourly = "https://crossorigin.me/http://api.wunderground.com/api/" + APIKey + "/hourly/q/" + endState + "/" + cityReplaced + ".json";
+            var queryURLconditions = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/conditions/q/" + endState + "/" + cityReplaced + ".json";
+            var queryURLhourly = "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/" + APIKey + "/hourly/q/" + endState + "/" + cityReplaced + ".json";
             $.ajax({
                 url: queryURLhourly,
                 method: "GET"
@@ -545,38 +570,42 @@ function showSteps(directionResult) {
                             break;
 
                         case "haze":
-                            curObservationLower = "hazy";
+                            forObservationLower = "hazy";
                             break;
 
                         case "freezingrain":
-                            curObservationLower = "sleet";
+                            forObservationLower = "sleet";
                             break;
 
                         case "overcast":
-                            curObservationLower = "cloudy";
+                            forObservationLower = "cloudy";
                             break;
 
                         case "thunderstorms":
-                            curObservationLower = "tstorms";
+                            forObservationLower = "tstorms";
                             break;
 
                         case "thunderstorm":
-                            curObservationLower = "tstorms";
+                            forObservationLower = "tstorms";
                             break;
 
                         case "scatteredclouds":
-                            curObservationLower = "partlycloudy";
+                            forObservationLower = "partlycloudy";
                             break;
 
                         case "fog":
-                            curObservationLower = "foggy";
+                            forObservationLower = "foggy";
                             break;
 
                       
                     }
 
 
-                    $("#weather-conditions").append("<Div>FORCASTin" + hoursAway + "HOURS  Temperature:" + forTemp + "Conditions:<img src=https://icons.wxug.com/i/c/k/" + forObservationLower + ".gif>" + forObservationLower + "Wind:" + forWspd + "Direction:" + forWdir + "</Div>")
+                    $("#weather-conditions").append("<div>"+endCity +"," + endState + "   weather upon arrival in " + hoursAway + " hours </div><br/>") 
+                    $("#weather-conditions").append("<div> Temperature:" + forTemp + "°</div><br/>")
+                    $("#weather-conditions").append("<div> <img src=https://icons.wxug.com/i/c/k/" + forObservationLower + ".gif>" + forObservationLower)
+                    $("#weather-conditions").append("<div> Wind: " + forWspd + "mph  Direction: " + forWdir + "</div>")
+                   
 
 
                 })
