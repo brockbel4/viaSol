@@ -67,6 +67,56 @@ html, body {
         border: 2px solid rgba(39, 32, 32, 0.8);
         line-height: 150%;
 }
+#origin-weather {
+    margin-top: 5%;
+    text-align: center;
+    color: white;
+    background-color:rgba(39, 32, 32, 0.8);
+    border-radius: 25px;
+    border: 2px solid rgba(39, 32, 32, 0.8);
+    line-height: 150%; 
+}
+
+#destination-weather{
+    margin-top: 5%;
+    text-align: center;
+    color: white;
+    background-color:rgba(39, 32, 32, 0.8);
+    border-radius: 25px;
+    border: 2px solid rgba(39, 32, 32, 0.8);
+    line-height: 150%;
+}
+
+#point1{
+    margin-top: 5%;
+    text-align: center;
+    color: white;
+    background-color:rgba(39, 32, 32, 0.8);
+    border-radius: 25px;
+    border: 2px solid rgba(39, 32, 32, 0.8);
+    line-height: 150%;
+}
+
+#point2{
+    margin-top: 5%;
+    text-align: center;
+    color: white;
+    background-color:rgba(39, 32, 32, 0.8);
+    border-radius: 25px;
+    border: 2px solid rgba(39, 32, 32, 0.8);
+    line-height: 150%;
+}
+
+#point3{
+    margin-top: 5%;
+    text-align: center;
+    color: white;
+    background-color:rgba(39, 32, 32, 0.8);
+    border-radius: 25px;
+    border: 2px solid rgba(39, 32, 32, 0.8);
+    line-height: 150%;
+}
+
 .loginbuttons {
     color: black;
     background-color: white;
