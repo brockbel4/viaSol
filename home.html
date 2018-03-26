@@ -18,23 +18,22 @@
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <!--Import materialize.css-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
     </script>
 
     <!-- Linking in Style.css (custom css file) -->
     <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="./assets/javascript/app.js"></script>
 
 </head>
 
 <body>
     <!-- Linking in JQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
     <!-- Linking in Firebase -->
@@ -45,6 +44,9 @@
             <div class="nav-wrapper">
                 <a href="home.html" class="brand-logo">
                     <img src="./assets/images/via-sol.png" alt="via-sol-logo" id="logo" a href="home.html">
+                </a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse">
+                    <i class="material-icons">menu</i>
                 </a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li>
@@ -57,64 +59,95 @@
                         <a href="account.html" id="account">Account</a>
                     </li>
                 </ul>
+                <ul id="mobile-demo" class="side-nav">
+                    <li>
+                        <a href="home.html" id="home">Home</a>
+                    </li>
+                    <li>
+                        <a href="warnings.html" id="wwarnings">Weather Warnings</a>
+                    </li>
+                    <li>
+                        <a href="account.html" id="account">Account</a>
+                    </li>
+                </ul>
             </div>
+
         </nav>
-    </div>
 
-    <div class="row">
-        <div class="col m3" id="hleftmar">
-            <div id="input" class="landing">
-                <form id="user-input">
-                    <p class="criteria" id="starting">Starting Location: </p>
-                    <input type="text" id="start-location">
 
-                    <p class="criteria">Destination: </p>
-                    <input type="text" id="end-location">
 
-                    <p class="criteria">Departure Date: </p>
-                    <input type="date" name="date" id="date">
+        <div class="row">
+            <div class="col m3" id="hleftmar">
+                <div id="input" class="landing">
+                    <form id="user-input">
+                        <p class="criteria" id="starting">Starting Location: </p>
+                        <input type="text" id="start-location" value="i.e. 'Syracuse'">
 
-                    <p class="criteria">Departure Time: </p>
-                    <input type="time" name="time" id="time">
+                        <p class="criteria">Destination: </p>
+                        <input type="text" id="end-location" value="i.e. 'Houston'">
+
+                        <p class="criteria">Departure Date: </p>
+                        <input type="date" name="date" id="date">
+
+                        <p class="criteria">Departure Time: </p>
+                        <input type="time" name="time" id="time">
+                        <br>
+                        <button id="search" type="submit">
+                            <b>Go!</b>
+                        </button>
+                    </form>
+                    <p>
+                        (Please be advised that if you're planning your trip more than 36 hours in advance, hourly forecasts may not be accurate.)</p>
                     <br>
-                    <button id="search" type="submit">
-                        <b>Go!</b>
-                    </button>
-                </form>
-                <p>
-                    (Please be advised that if you're planning your trip more than 36 hours in advance, hourly forecasts may not be accurate.)</p>
-                <br>
+                </div>
+
+                <div id="weather-conditions">
+                </div>
+
+                <div id="origin-weather">
+                </div>
+
+                <div id="point1">
+                </div>
+
+                <div id="point2">
+                </div>
+
+                <div id="point3">
+                </div>
+
+                <div id="destination-weather">
+                </div>
+
             </div>
-            <div id="weather-conditions">
+            <div class="col m6 s12" id="hcenter">
+                <div id="map">
+
+                </div>
+            </div>
+            <div class="col m3" id="hleftmar">
+                <div id="directionsPanel" class="landing">
+                    <p id="introtext">
+                        <br> Fill in all of your trip information, then click go.
+                        <br> We'll show you your route, a forecast of the weather along your trip, as well as step- by- step
+                        directions.
+                        <br>
+                        <br>
+                    </p>
+                </div>
             </div>
         </div>
-        <div class="col m6" id="hcenter">
-            <div id="map">
-
-            </div>
-        </div>
-        <div class="col m3" id="hleftmar">
-            <div id="directionsPanel" class="landing">
-                <p id="introtext">
-                    <br> Fill in all of your trip information, then click go. We'll show you your route, a forecast of the weather
-                    along your trip, as well as step- by- step directions.
-                    <br>
-                    <br>
-                </p>
-            </div>
-        </div>
-    </div>
 
 
 
 
-    <footer class="page-footer">
-        © 2018 Via-Sol by Brock, Ross, Scott, and Taylor
-    </footer>
-    <!-- Linking in app.js (custom javascript file containing our logic) -->
-    <script src="./assets/javascript/app.js"></script>
+        <footer class="page-footer">
+            © 2018 Via-Sol by Brock, Ross, Scott, and Taylor
+        </footer>
+        <!-- Linking in app.js (custom javascript file containing our logic) -->
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIPfXCrgRMf1mJjoODmHMPgkrbT6iUqUo&callback=initMap"></script>
+
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIPfXCrgRMf1mJjoODmHMPgkrbT6iUqUo&callback=initMap"></script>
 
 </body>
 

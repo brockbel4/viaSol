@@ -2,6 +2,11 @@ console.log("AHSOGHASOGHASOGHAS");
 $('#weather-conditions').hide();
 $('#log-in').hide();
 
+$( document ).ready(function(){
+    $(".button-collapse").sideNav();
+
+})
+
 
 // Initialize Firebase
 var config = {
