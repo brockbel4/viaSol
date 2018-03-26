@@ -2,6 +2,11 @@ console.log("AHSOGHASOGHASOGHAS");
 $('#weather-conditions').hide();
 $('#log-in').hide();
 
+$( document ).ready(function(){
+    $(".button-collapse").sideNav();
+
+})
+
 
 // Initialize Firebase
 var config = {
@@ -784,7 +789,7 @@ $(document).on("click", "#search", function calculateAndDisplayRoute() {
     calcRoute();
     $("#input").hide();
     $("#weather-conditions").show();
-
+    $("#introtext").css("display", "none");
 })
 
 // <!--START WEATHER API'S BELOW  -->
