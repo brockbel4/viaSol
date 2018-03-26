@@ -146,11 +146,10 @@ html, body {
     height: fit-content; */
 /* } */
 #input {
-    margin-top: 0%;
     margin-left: 2%;
     margin-right: 1%;
     background-color: none;
-    height: 390px;
+    height: auto;
 }
 .createInput {
     border-bottom: none;
