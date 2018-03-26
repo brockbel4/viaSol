@@ -1,5 +1,7 @@
 console.log("AHSOGHASOGHASOGHAS");
 $('#weather-conditions').hide();
+$('#origin-weather').hide();
+$('#destination-weather').hide();
 $('#log-in').hide();
 
 $( document ).ready(function(){
@@ -490,10 +492,10 @@ function showSteps(directionResult) {
 
 
 
-                    $("#weather-conditions").prepend("<div>" + startCity + "," + startState + "  Current Weather </div><br/>")
-                    $("#weather-conditions").prepend("<div> Temperature:" + curTemp + "°</div><br/>")
-                    $("#weather-conditions").prepend("<div> <img src=https://icons.wxug.com/i/c/k/" + curObservationLower + ".gif>" + curObservationLower)
-                    $("#weather-conditions").prepend("<div> Wind: " + curWinSpd + "mph  Direction: " + curWind + "</div><br/><div></div><br/>")
+                    $("#origin-weather").append("<div>" + startCity + "," + startState + "  Current Weather </div><br/>")
+                    $("#origin-weather").append("<div> Temperature:" + curTemp + "°</div><br/>")
+                    $("#origin-weather").append("<div> <img src=https://icons.wxug.com/i/c/k/" + curObservationLower + ".gif>" + curObservationLower)
+                    $("#origin-weather").append("<div> Wind: " + curWinSpd + "mph  Direction: " + curWind + "</div><br/><div></div><br/>")
 
 
 
@@ -602,10 +604,10 @@ function showSteps(directionResult) {
                     }
 
 
-                    $("#origin-weather").append("<div>" + endCity + "," + endState + "   weather upon arrival in " + hoursAway + " hours </div><br/>")
-                    $("#origin-weather").append("<div> Temperature:" + forTemp + "°</div><br/>")
-                    $("#origin-weather").append("<div> <img src=https://icons.wxug.com/i/c/k/" + forObservationLower + ".gif>" + forObservationLower)
-                    $("#origin-weather").append("<div> Wind: " + forWspd + "mph  Direction: " + forWdir + "</div>")
+                    $("#destination-weather").append("<div>" + endCity + "," + endState + "   weather upon arrival in " + hoursAway + " hours </div><br/>")
+                    $("#destination-weather").append("<div> Temperature:" + forTemp + "°</div><br/>")
+                    $("#destination-weather").append("<div> <img src=https://icons.wxug.com/i/c/k/" + forObservationLower + ".gif>" + forObservationLower)
+                    $("#destination-weather").append("<div> Wind: " + forWspd + "mph  Direction: " + forWdir + "</div>")
 
 
 
@@ -788,7 +790,8 @@ $(document).on("click", "#search", function calculateAndDisplayRoute() {
     event.preventDefault();
     calcRoute();
     $("#input").hide();
-    $("#weather-conditions").show();
+    $("#origin-weather").show();
+    $("#destination-weather").show();
     $("#introtext").css("display", "none");
 })
 
