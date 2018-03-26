@@ -136,15 +136,7 @@ html, body {
 #usdest {
     color: rgb(160, 119, 119);
 }
-/* #user-input {
-    border: none;
-    background-image: url("../images/sunray.png");;
-    color: black;
-    border-style: groove;
-    border-color: gray;
-    border-radius: 5%;
-    height: fit-content; */
-/* } */
+
 #input {
     margin-left: 2%;
     margin-right: 1%;
